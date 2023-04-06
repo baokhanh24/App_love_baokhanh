@@ -13,6 +13,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <style>
+        .menu{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .number_phone.show {
+            display: block;
+        }
+        
+    </style>
 </head>
 <body>
     <div class="main">
@@ -62,14 +73,79 @@
             </div>
             <div class="fooder">
                 <div class="bottom">
-                    <a href="" class="heart"><i class='bx bx-heart'></i></a>
-                    <a href="" class="home"><i class='bx bx-home' ></i></a>
-                    <a href="" class="phone"><i class='bx bx-phone'></i></a>
+                    <ul class="navbar">
+                        <li class="navbar_li" id="navbar_li"  onclick="toggleMenu(event)" ><a href="" class="heart"><i class='bx bx-heart'></i></a>
+                            <ul class="menu" id="menu">
+                                <li><a href=""><i class='bx bx-notepad'></i> Ghi Chú</a></li>
+                                <li><a href=""><i class='bx bx-photo-album' ></i> Photo Love</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li class="navbar_home"><a href="" class="home"><i class='bx bx-home' ></i></a></li>
+                        <li class="phone_li" onclick="showMenu(event)"><a href="" class="phone"><i class='bx bx-phone'></i></a>
+                            <ul class="number_phone" id="number_phone">
+                                <li><a href="tel:0906457971"><i class='bx bx-phone'>Khánh</i> 0906457971</a></li>
+                                <li><a href="tel:0905014507"><i class='bx bx-phone'>Thi</i> 0905014507</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                    
                 </div>    
             </div>
         </div>
     </div>
 </body>
+<script>
+    // Lấy tham chiếu đến các phần tử HTML cần sử dụng
+    // Lấy tham chiếu đến các phần tử HTML cần sử dụng
+    function toggleMenu(event) {
+        if (event.target.tagName !== "A") {
+            event.preventDefault();
+             event.stopPropagation(); // Ngăn chặn việc load lại trang sau khi click
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+            menu.style.display = "none";
+            } else {
+            menu.style.display = "block";
+            }
+        }
+        document.addEventListener("click", function(event) {
+        var menu = document.getElementById("menu");
+        var isClickInsideMenu = menu.contains(event.target);
+       
+        if (!isClickInsideMenu ) {
+            menu.style.display = "none";
+        }
+    });     
+    }
+    
+</script>
+<script>
+    // Lấy tham chiếu đến các phần tử HTML cần sử dụng
+    // Lấy tham chiếu đến các phần tử HTML cần sử dụng
+    function showMenu(event) {
+        if (event.target.tagName !== "A") {
+            event.preventDefault();
+             event.stopPropagation(); // Ngăn chặn việc load lại trang sau khi click
+            var menu = document.getElementById("number_phone");
+            if (menu.style.display === "block") {
+            menu.style.display = "none";
+            } else {
+            menu.style.display = "block";
+            }
+        }
+        document.addEventListener("click", function(event) {
+        var menu = document.getElementById("number_phone");
+        var isClickInsideMenu = menu.contains(event.target);
+        
+        if (!isClickInsideMenu ) {
+            menu.style.display = "none";
+        }
+    });     
+    }
+    
+</script>
 <script>
         // Lấy ngày hiện tại
     var today = new Date();
@@ -90,17 +166,24 @@
     var today = new Date();
 
     // Ngày sinh nhật anh Khánh
-    var birthday = new Date("2023-09-24");
-
+    var birthdaymen = new Date("2023-09-24");
+    var birthdaygirl = new Date("2023-02-21");
+    var travel = new Date("2023-04-07");
     // Ngày kỉ niệm 1 năm yêu nhau
     var anniversary = new Date("2023-06-24");
 
     // So sánh ngày hiện tại với ngày sinh nhật anh Khánh
-    if (today.getDate() === birthday.getDate() && today.getMonth() === birthday.getMonth()) {
+    if (today.getDate() === birthdaymen.getDate() && today.getMonth() === birthdaymen.getMonth()) {
     // Thay đổi nội dung của thẻ span thành "Chúc mừng sinh nhật anh Khánh"
     document.querySelector('.Notification').innerHTML = "Chúc mừng sinh nhật anh Khánh";
     }
-
+    if (today.getDate() === travel.getDate() && today.getMonth() === travel.getMonth()) {
+    document.querySelector('.Notification').innerHTML = "Hôm nay đi du lịch ở Huế";
+    }
+    if (today.getDate() === birthdaygirl.getDate() && today.getMonth() === birthdaygirl.getMonth()) {
+    // Thay đổi nội dung của thẻ span thành "Chúc mừng sinh nhật anh Khánh"
+    document.querySelector('.Notification').innerHTML = "Chúc mừng sinh nhật chị Thi";
+    }
     // So sánh ngày hiện tại với ngày kỉ niệm 1 năm yêu nhau
     if (today.getDate() === anniversary.getDate() && today.getMonth() === anniversary.getMonth()) {
     // Thay đổi nội dung của thẻ span thành "Chúc mừng kỉ niệm 1 năm yêu nhau"
