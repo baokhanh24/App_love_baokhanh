@@ -81,12 +81,15 @@
 .share{
     width: 15px;
     height: 15px;
+    border-radius: 10px;
 }
 .name_men img{
     margin-right: 6px;
+    margin-top: 2px;
 }
 .name_woman img{
     margin-right: 4px;
+    margin-top: 2px;
 }
 .name_share{
     font-family: 'Barlow Condensed', sans-serif;
@@ -235,10 +238,10 @@ li{
     bottom: 157%;
     left: -62px;
     width: 159px;
-    height: 110px;
+    min-height: 100%;
     background: linear-gradient(180deg, #a23e61 23%, #96103d 81%);
     border-radius: 15px;
-    padding: 17px 20px;
+    padding: 10px 20px;
     display: none;
 }
 .menu li,.number_phone li{
@@ -256,6 +259,7 @@ li{
 .menu a{
     display: flex;
     align-items: center;
+    
 }
 .menu a i{
     display: flex;
@@ -292,6 +296,5 @@ li{
     display: block;
     text-decoration: none;
     font-weight: 700;
-    color: #4c0051;
-    
+    color: #ccc;  
 }
